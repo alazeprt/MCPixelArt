@@ -26,6 +26,6 @@ public class MCPixelArt implements ModInitializer {
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> ExportPaint.register(dispatcher));
 
-        LOGGER.info("MCPixelArt v1.0.0-alpha Enabled.");
+        LOGGER.info("MCPixelArt v1.0-beta.1 Enabled.");
     }
 }
