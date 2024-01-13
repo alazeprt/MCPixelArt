@@ -1,7 +1,6 @@
 package com.alazeprt.mcpixelart.utils;
 
 import net.minecraft.block.MapColor;
-import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,8 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class PixelManipulation {
     public static PixelException generateImage(int width, int height, String exportPath, Color[][] matrix) {

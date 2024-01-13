@@ -3,7 +3,7 @@
   "id": "mcpixelart",
   "version": "${version}",
   "name": "MCPixelArt",
-  "description": "",
+  "description": "${description}",
   "authors": [
     "alazeprt"
   ],

@@ -1,16 +1,10 @@
 package com.alazeprt.mcpixelart;
 
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.minecraft.text.LiteralText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.alazeprt.mcpixelart.commands.ExportPaint;
-
-import static net.minecraft.server.command.CommandManager.argument;
-import static net.minecraft.server.command.CommandManager.literal;
 
 public class MCPixelArt implements ModInitializer {
     // This logger is used to write text to the console and the log file.
