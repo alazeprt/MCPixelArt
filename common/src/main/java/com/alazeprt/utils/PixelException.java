@@ -1,4 +1,4 @@
-package com.alazeprt.mcpixelart.utils;
+package com.alazeprt.utils;
 
 public class PixelException {
     private final int code;

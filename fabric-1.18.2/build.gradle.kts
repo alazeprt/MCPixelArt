@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("application")
     id("fabric-loom") version "1.2-SNAPSHOT"
 }
 
@@ -18,6 +19,8 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
 
     modImplementation("com.sk89q.worldedit:worldedit-fabric-mc1.18.2:7.2.10")
+
+    implementation(project(":common"))
 }
 
 java {
@@ -41,3 +44,6 @@ tasks.processResources {
     }
 }
 
+tasks.jar {
+    from(project(":common").sourceSets["main"].output)
+}

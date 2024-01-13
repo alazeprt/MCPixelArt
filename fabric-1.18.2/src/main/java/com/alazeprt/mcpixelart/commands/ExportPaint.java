@@ -1,7 +1,7 @@
 package com.alazeprt.mcpixelart.commands;
 
-import com.alazeprt.mcpixelart.utils.PixelException;
-import com.alazeprt.mcpixelart.utils.PixelManipulation;
+import com.alazeprt.utils.PixelException;
+import com.alazeprt.utils.PixelManipulation;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
 import com.sk89q.worldedit.LocalSession;
@@ -17,6 +17,8 @@ import net.minecraft.util.math.BlockPos;
 
 import java.awt.*;
 
+import static com.alazeprt.utils.PixelUtils.decimalToHex;
+import static com.alazeprt.utils.PixelUtils.hexToRGB;
 import static com.mojang.brigadier.arguments.StringArgumentType.getString;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static net.minecraft.server.command.CommandManager.argument;
@@ -47,7 +49,7 @@ public class ExportPaint {
             int maxZ = Math.max(region.getMaximumPoint().getBlockZ(), region.getMinimumPoint().getBlockZ());
             int minZ = Math.min(region.getMaximumPoint().getBlockZ(), region.getMinimumPoint().getBlockZ());
             Iterable<BlockVector2> iterable = region.getBoundingBox().asFlatRegion();
-            Color[][] colors = new Color[maxX-minX+1][maxZ-minZ+1];
+            PixelManipulation pixelManipulation = new PixelManipulation(maxX-minX+1, maxZ-minZ+1);
             for(BlockVector2 blockVector2 : iterable) {
                 BlockPos finalBlockPos = null;
                 Color color = null;
@@ -58,22 +60,28 @@ public class ExportPaint {
                         continue;
                     }
                     finalBlockPos = blockPos;
-                    MapColor color1 = blockState.getMapColor(source.getWorld(), blockPos);
-                    color = PixelManipulation.generateColor(color1);
+                    color = generateColor(blockState.getMapColor(source.getWorld(), blockPos));
                     break;
                 }
                 if(finalBlockPos == null) {
-                    color = PixelManipulation.generateColor(MapColor.WHITE);
+                    color = generateColor(MapColor.WHITE);
                     finalBlockPos = new BlockPos(blockVector2.getBlockX(), minY, blockVector2.getBlockZ());
                 }
-                colors[finalBlockPos.getX()-minX][finalBlockPos.getZ()-minZ] = color;
+                pixelManipulation.setRGB(finalBlockPos.getX()-minX, finalBlockPos.getZ()-minZ, color);
             }
-            PixelException exception = PixelManipulation.generateImage(maxX-minX+1, maxZ-minZ+1, path, colors);
+            PixelException exception = pixelManipulation.export(path);
             source.sendFeedback(new LiteralText(exception.getMessage()), false);
         } catch (Exception e) {
             source.sendFeedback(new LiteralText("An error has occurred: \n" + e), false);
             e.printStackTrace();
         }
         return Command.SINGLE_SUCCESS; // 成功
+    }
+
+    private static Color generateColor(MapColor mapColor) {
+        long colorCode = mapColor.color;
+        System.out.println(colorCode);
+        String hexColor = decimalToHex(colorCode);
+        return hexToRGB(hexColor);
     }
 }
