@@ -22,11 +22,11 @@ public class MCPixelArt {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-        LOGGER.info("MCPixelArt v1.0.0-beta.1 initing...");
+        LOGGER.info("MCPixelArt v1.0 initing...");
     }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("MCPixelArt v1.0.0-beta.1 starting...");
+        LOGGER.info("MCPixelArt v1.0 starting...");
     }
 }
