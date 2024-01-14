@@ -31,7 +31,7 @@ tasks.processResources {
     inputs.property("version", project.property("version"))
     inputs.property("minecraft_version", project.property("minecraft_version"))
     inputs.property("loader_version", project.property("loader_version"))
-    inputs.property("description", project.property("description"))
+    inputs.property("description", project.property("mod_description"))
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
@@ -39,7 +39,7 @@ tasks.processResources {
                 "version" to project.property("version"),
                 "minecraft_version" to project.property("minecraft_version"),
                 "loader_version" to project.property("loader_version"),
-                "description" to project.property("description")
+                "description" to project.property("mod_description")
         ))
     }
 }
