@@ -27,7 +27,7 @@ import static com.alazeprt.utils.PixelUtils.hexToRGB;
 
 public class ExportPaint {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("export")
+        dispatcher.register(Commands.literal("/export")
                 .then(Commands.argument("path", StringArgumentType.greedyString())
                         .executes(context -> handle(context.getSource(), context.getArgument("path", String.class)))));
     }
