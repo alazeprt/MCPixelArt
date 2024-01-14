@@ -47,3 +47,11 @@ tasks.processResources {
 tasks.jar {
     from(project(":common").sourceSets["main"].output)
 }
+
+tasks.remapJar {
+    archiveBaseName.set("mcpixelart")
+}
+
+tasks.remapSourcesJar {
+    archiveBaseName.set("mcpixelart")
+}
