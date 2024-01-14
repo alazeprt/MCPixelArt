@@ -32,6 +32,14 @@ tasks.processResources {
     inputs.property("minecraft_version", project.property("minecraft_version"))
     inputs.property("loader_version", project.property("loader_version"))
     inputs.property("description", project.property("mod_description"))
+    inputs.property("mod_id", project.property("mod_id"))
+    inputs.property("name", project.property("archives_base_name"))
+    inputs.property("author", project.property("author"))
+    inputs.property("repo", project.property("repo"))
+    inputs.property("issues", project.property("issues"))
+    inputs.property("license", project.property("license"))
+    inputs.property("worldedit_version", project.property("worldedit_version"))
+
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
@@ -39,7 +47,14 @@ tasks.processResources {
                 "version" to project.property("version"),
                 "minecraft_version" to project.property("minecraft_version"),
                 "loader_version" to project.property("loader_version"),
-                "description" to project.property("mod_description")
+                "description" to project.property("mod_description"),
+                "mod_id" to project.property("mod_id"),
+                "name" to project.property("archives_base_name"),
+                "author" to project.property("author"),
+                "repo" to project.property("repo"),
+                "issues" to project.property("issues"),
+                "license" to project.property("license"),
+                "worldedit_version" to project.property("worldedit_version")
         ))
     }
 }
@@ -49,9 +64,9 @@ tasks.jar {
 }
 
 tasks.remapJar {
-    archiveBaseName.set("mcpixelart")
+    archiveBaseName.set("mcpixelart-fabric")
 }
 
 tasks.remapSourcesJar {
-    archiveBaseName.set("mcpixelart")
+    archiveBaseName.set("mcpixelart-fabric")
 }

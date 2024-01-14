@@ -56,6 +56,6 @@ side="BOTH"
 [[dependencies.${mod_id}]]
 modId="worldedit"
 mandatory=true
-versionRange="7.2.10"
+versionRange="${worldedit_version}"
 ordering="BEFORE"
 side="BOTH"

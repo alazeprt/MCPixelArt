@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "mcpixelart",
+  "id": "${mod_id}",
   "version": "${version}",
-  "name": "MCPixelArt",
+  "name": "${name}",
   "description": "${description}",
   "authors": [
-    "alazeprt"
+    "${author}"
   ],
   "contact": {
-    "repo": "https://github.com/alazeprt/MCPixelArt",
-    "issues": "https://github.com/alazeprt/MCPixelArt/issues",
-    "website": "https://github.com/alazeprt/MCPixelArt"
+    "repo": "${repo}",
+    "issues": "${issues}",
+    "website": "${repo}"
   },
-  "license": "LGPL-3.0",
+  "license": "${license}",
   "icon": "assets/mcpixelart/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -24,6 +24,6 @@
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
-    "worldedit": "7.2.10"
+    "worldedit": "${worldedit_version}"
   }
 }
